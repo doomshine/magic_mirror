@@ -1,0 +1,123 @@
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body{
+  font-family: Helvetica, sans-serif;
+}
+
+.msg {
+  color: #3498db;
+  font-size: 72px;
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  top: 27vh;
+  margin: 0 auto;
+  opacity: 0;
+  -webkit-animation: fadeIn ease-in 1;
+  -moz-animation: fadeIn ease-in 1;
+  animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.45s;
+  -moz-animation-duration: 0.45s;
+  animation-duration: 0.45s;
+}
+.reload-bttn {
+  font-family: Helvetica, sans-serif;
+  font-weight: 100;
+  color: white;
+  background: #3498db;
+  position: relative;
+  top: 36vh;
+  left: 50%;
+  margin-left: -60px;
+  width: 120px;
+  padding: 12px 0;
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+.reload-bttn:hover {
+  color: #3498db;
+  background: white;
+  border: 1px solid #3498db;
+}
+.reload-bttn:active,
+.reload-bttn:focus {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  text-shadow: none;
+  border: none;
+  outline: 0;
+}
+
+/* RSS FEED */
+
+.BreakingNewsController {
+  width: 90%;
+  overflow: hidden;
+  background: #FFF;
+  height: auto;
+  position: absolute;
+  bottom: 36px;
+}
+.BreakingNewsController .bn-title {
+  display: inline-block;
+  float: left;
+  padding: 10px 20px;
+  background: #5aa628;
+  color: #FFF;
+}
+.BreakingNewsController ul {
+  padding: 0;
+  margin: 0;
+  display: block;
+  list-style: none;
+  position: absolute;
+  left: 180px;
+  right: 50px;
+}
+.BreakingNewsController ul li {
+  list-style: none;
+  padding: 10px 20px;
+  display: none;
+}
+.BreakingNewsController ul li a {
+  text-decoration: none;
+  color: #333;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0;
+}
+.easing a,
+.easing span {
+  transition: .25s linear;
+  -moz-transition: .25s linear;
+  -webkit-transition: .25s linear;
+}

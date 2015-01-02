@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Compliments</title>
+  <meta name="description" content="Random Nice Thing Generator">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="js/jQuery.js"></script>
+  <script src="js/BreakingNews.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body>
+
+  <p class="msg"></p>
+
+  <form>
+    <input class="reload-bttn" type="button" onClick="history.go(0)" value="Tell Me More">
+  </form>
+
+<div class="BreakingNewsController easing" id="breakingnews">
+        	<div class="bn-title"></div>
+            <ul>
+                <li><a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry bu deneme text metinidir</a></li>
+                <li><a href="#">It is a long established fact that a reader will be distracted</a></li>
+                <li><a href="#">Many desktop publishing packages</a></li>
+                <li><a href="#">All the Lorem Ipsum generators on the Internet tend to repeat predefined</a></li>
+                <li><a href="#">The standard chunk of Lorem Ipsum used</a></li>
+                <li><a href="#">English versions from the 1914 translation by H. Rackham.</a></li>
+            </ul>
+        </div>
+
+
+  <script type="text/javascript">
+    var messages = [
+      "Looking good.",
+      "Have a great day.",
+      "I like your shirt.",
+      "That looks nice on you.",
+      "I disagree with anyone who disagrees with you.",
+      "Take a break; you've earned it.",
+      "I support all of your decisions.",
+      ":)",
+      "You are perfect just the way you are.",
+      "Don't worry. You'll do great.",
+      "The Force is strong with you.",
+      "I believe in you.",
+      "You're very talented.",
+      "You are intelligent.",
+      "You are interesting.",
+      "You are smart.",
+      "You are delightful.",
+      "You are kind.",
+      "You are special.",
+      "You are excellent.",
+      "You Rock.",
+      "You make a difference.",
+      "You're doing great things.",
+      "You seem nice."
+    ];
+
+    var i = Math.floor(Math.random() * messages.length)
+
+    var element = messages[i];
+
+    var msg = document.querySelectorAll('.msg')[0];
+
+    msg.innerHTML = element;
+
+    $("#breakingnews").BreakingNews({
+
+      background: "#FFF",
+      title: "TOP STORIES",
+      titlecolor: "#FFF",
+      titlebgcolor: "#333",
+      linkcolor: "#333",
+      linkhovercolor: "#099",
+      fonttextsize: 24,
+      isbold: false,
+      border: "0",
+      width: "90%",
+      timer: 5000,
+      autoplay: true,
+      effect: "slide",
+      data: "http://www.tested.com/feeds/",
+
+    });
+  </script>
+
+</body>
+
+</html>
