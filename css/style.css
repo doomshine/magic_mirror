@@ -27,6 +27,10 @@ body{
   font-family: Helvetica, sans-serif;
 }
 
+.container {
+  position: absolute;
+}
+
 .msg {
   color: #3498db;
   font-size: 72px;
@@ -82,16 +86,16 @@ body{
 .BreakingNewsController {
   width: 90%;
   overflow: hidden;
-  background: #FFF;
+  background: #3498db;
   height: auto;
   position: absolute;
-  bottom: 36px;
+  bottom: 12px;
 }
 .BreakingNewsController .bn-title {
   display: inline-block;
   float: left;
   padding: 10px 20px;
-  background: #5aa628;
+  background: #3498db;
   color: #FFF;
 }
 .BreakingNewsController ul {
