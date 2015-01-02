@@ -1,21 +1,7 @@
 (function (e) {
   $.fn.BreakingNews = function (e) {
     var t = {
-      background: "#FFF",
-      title: "NEWS",
-      titlecolor: "#FFF",
-      titlebgcolor: "#5aa628",
-      linkcolor: "#333",
-      linkhovercolor: "#5aa628",
-      fonttextsize: 16,
-      isbold: false,
-      border: "none",
-      width: "100%",
-      autoplay: true,
-      timer: 3e3,
-      modulid: "brekingnews",
-      effect: "fade",
-      data: false
+
     };
     var e = $.extend(t, e);
     return this.each(function () {

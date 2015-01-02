@@ -7,22 +7,25 @@
   <title>Magic Mirror</title>
   <meta name="description" content="Random Nice Thing Generator">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="js/jQuery.js"></script>
-  <script src="js/BreakingNews.js"></script>
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 
 <body>
 
-  <div id="msgcontainer">
+  <div class="weather">
+    <p class="temp"></p>
+    <img class="weather_icon" src="#" />
+  </div>
+  <div class="calendar">
+
+  </div>
+  <div class="container">
     <p class="msg"></p>
     <form>
       <input class="reload-bttn" type="button" name="reload" value="Tell Me More">
     </form>
-
   </div>
-
   <div class="BreakingNewsController easing" id="breakingnews">
     <div class="bn-title"></div>
     <ul>
@@ -30,7 +33,25 @@
   </div>
 
 
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+  <script src="js/BreakingNews.js"></script>
   <script type="text/javascript">
+    $.ajax({
+      async: false,
+      url: "http://api.wunderground.com/api/b85fbf77a6804cc7/geolookup/conditions/q/MN/Minneapolis.json",
+      dataType: "jsonp",
+      success: function (parsed_json) {
+        icon = parsed_json['current_observation']['icon'];
+        temp_f = parsed_json['current_observation']['temp_f'];
+        temp = document.querySelectorAll('.temp')[0];
+        $('.weather_icon').attr('src', 'img/' + icon + '.svg');
+        temp.innerHTML = temp_f + '&deg;F';
+        weather.innerHTML = weather;
+
+      }
+    });
+
     var messages = [
       "Looking good.",
       "Have a great day.",
@@ -68,27 +89,26 @@
 
 
     $("input[name='reload']").click(function () {
-      var i = Math.floor(Math.random() * messages.length);
+      $(".msg").fadeOut(0, function () {
+        var i = Math.floor(Math.random() * messages.length);
+        var element = messages[i];
+        var msg = document.querySelectorAll('.msg')[0];
+        msg.innerHTML = element;
+      });
 
-      var element = messages[i];
-
-      var msg = document.querySelectorAll('.msg')[0];
-
-      msg.innerHTML = element;
+      $(".msg").fadeIn('slow');
     });
 
     $("#breakingnews").BreakingNews({
 
-      background: "#FFF",
+      background: "#000",
       title: "TOP STORIES",
-      titlecolor: "#FFF",
-      titlebgcolor: "#3498db",
-      linkcolor: "#333",
-      linkhovercolor: "#099",
+      titlecolor: "#000",
+      titlebgcolor: "#FFF",
       fonttextsize: 24,
       isbold: false,
       border: "0",
-      width: "90%",
+      width: "99%",
       timer: 5000,
       autoplay: true,
       effect: "slide",
@@ -96,7 +116,6 @@
 
     });
   </script>
-
 </body>
 
 </html>

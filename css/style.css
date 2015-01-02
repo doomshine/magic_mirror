@@ -25,19 +25,33 @@
 
 body{
   font-family: Helvetica, sans-serif;
+  background: #000;
 }
 
 .container {
+  position: relative;
+}
+
+.weather {
   position: absolute;
+  text-align: center;
+  right: 24px;
+  font-size: 27px;
+  color: white;
+}
+
+.weather_icon {
+  height: 100px;
+  width: 100px;
 }
 
 .msg {
-  color: #3498db;
+  color: #FFF;
   font-size: 72px;
   text-align: center;
   font-weight: 700;
   position: relative;
-  top: 27vh;
+  top: 40vh;
   margin: 0 auto;
   opacity: 0;
   -webkit-animation: fadeIn ease-in 1;
@@ -54,9 +68,9 @@ body{
   font-family: Helvetica, sans-serif;
   font-weight: 100;
   color: white;
-  background: #3498db;
+  background: black;
   position: relative;
-  top: 36vh;
+  top: 42vh;
   left: 50%;
   margin-left: -60px;
   width: 120px;
@@ -67,7 +81,7 @@ body{
   cursor: pointer;
 }
 .reload-bttn:hover {
-  color: #3498db;
+  color: #0D0D0D;
   background: white;
   border: 1px solid #3498db;
 }
@@ -95,8 +109,6 @@ body{
   display: inline-block;
   float: left;
   padding: 10px 20px;
-  background: #3498db;
-  color: #FFF;
 }
 .BreakingNewsController ul {
   padding: 0;
@@ -114,7 +126,7 @@ body{
 }
 .BreakingNewsController ul li a {
   text-decoration: none;
-  color: #333;
+  color: #FFF;
   display: inline-block;
   overflow: hidden;
   padding: 0;
