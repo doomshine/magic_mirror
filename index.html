@@ -13,20 +13,15 @@
 
 <body>
 
-  <div class="weather">
+  <div class="weather fade">
     <p class="temp"></p>
-    <img class="weather_icon" src="#" />
+    <img class="weather_icon" src="#" alt="" />
   </div>
-  <div class="calendar">
 
-  </div>
   <div class="container">
-    <p class="msg"></p>
-    <form>
-      <input class="reload-bttn" type="button" name="reload" value="Tell Me More">
-    </form>
+    <p class="msg fade"></p>
   </div>
-  <div class="BreakingNewsController easing" id="breakingnews">
+  <div class="BreakingNewsController easing fade" id="breakingnews">
     <div class="bn-title"></div>
     <ul>
     </ul>
@@ -37,21 +32,6 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
   <script src="js/BreakingNews.js"></script>
   <script type="text/javascript">
-    $.ajax({
-      async: false,
-      url: "http://api.wunderground.com/api/b85fbf77a6804cc7/geolookup/conditions/q/MN/Minneapolis.json",
-      dataType: "jsonp",
-      success: function (parsed_json) {
-        icon = parsed_json['current_observation']['icon'];
-        temp_f = parsed_json['current_observation']['temp_f'];
-        temp = document.querySelectorAll('.temp')[0];
-        $('.weather_icon').attr('src', 'img/' + icon + '.svg');
-        temp.innerHTML = temp_f + '&deg;F';
-        weather.innerHTML = weather;
-
-      }
-    });
-
     var messages = [
       "Looking good.",
       "Have a great day.",
@@ -79,25 +59,28 @@
       "You seem nice."
     ];
 
-    var i = Math.floor(Math.random() * messages.length);
-
-    var element = messages[i];
-
-    var msg = document.querySelectorAll('.msg')[0];
-
-    msg.innerHTML = element;
-
-
-    $("input[name='reload']").click(function () {
-      $(".msg").fadeOut(0, function () {
-        var i = Math.floor(Math.random() * messages.length);
-        var element = messages[i];
-        var msg = document.querySelectorAll('.msg')[0];
-        msg.innerHTML = element;
+    function getWeather() {
+      $.ajax({
+        async: true,
+        url: "http://api.wunderground.com/api/b85fbf77a6804cc7/geolookup/conditions/q/MN/Minneapolis.json",
+        dataType: "jsonp",
+        success: function (parsed_json) {
+          icon = parsed_json['current_observation']['icon'];
+          temp_f = parsed_json['current_observation']['temp_f'];
+          temp = document.querySelectorAll('.temp')[0];
+          $('.weather_icon').attr('src', 'img/' + icon + '.svg');
+          temp.innerHTML = temp_f + '&deg;F';
+          weather.innerHTML = weather;
+        }
       });
+    };
 
-      $(".msg").fadeIn('slow');
-    });
+    function compliments() {
+      var i = Math.floor(Math.random() * messages.length);
+      var element = messages[i];
+      var msg = document.querySelectorAll('.msg')[0];
+      msg.innerHTML = element;
+    };
 
     $("#breakingnews").BreakingNews({
 
@@ -105,16 +88,19 @@
       title: "TOP STORIES",
       titlecolor: "#000",
       titlebgcolor: "#FFF",
-      fonttextsize: 24,
+      fonttextsize: 21,
       isbold: false,
       border: "0",
       width: "99%",
-      timer: 5000,
+      timer: 6000,
       autoplay: true,
       effect: "slide",
       data: "http://www.tested.com/feeds/",
 
     });
+
+    compliments();
+    getWeather();
   </script>
 </body>
 

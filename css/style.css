@@ -22,118 +22,85 @@
     opacity: 1;
   }
 }
-
-body{
-  font-family: Helvetica, sans-serif;
+body {
   background: #000;
+  font-family: Helvetica, sans-serif;
 }
-
 .container {
   position: relative;
 }
-
 .weather {
-  position: absolute;
-  text-align: center;
-  right: 24px;
-  font-size: 27px;
   color: white;
+  font-size: 27px;
+  position: absolute;
+  right: 24px;
+  text-align: center;
 }
-
 .weather_icon {
   height: 100px;
   width: 100px;
 }
-
-.msg {
-  color: #FFF;
-  font-size: 72px;
-  text-align: center;
-  font-weight: 700;
-  position: relative;
-  top: 40vh;
-  margin: 0 auto;
-  opacity: 0;
+.fade {
   -webkit-animation: fadeIn ease-in 1;
   -moz-animation: fadeIn ease-in 1;
   animation: fadeIn ease-in 1;
+  -webkit-animation-duration: 1.75s;
+  -moz-animation-duration: 1.75s;
+  animation-duration: 1.75s;
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -webkit-animation-duration: 0.45s;
-  -moz-animation-duration: 0.45s;
-  animation-duration: 0.45s;
 }
-.reload-bttn {
-  font-family: Helvetica, sans-serif;
-  font-weight: 100;
-  color: white;
-  background: black;
+.msg {
+  color: #FFF;
+  font-size: 72px;
+  font-weight: 700;
+  margin: 0 auto;
+  opacity: 0;
   position: relative;
-  top: 42vh;
-  left: 50%;
-  margin-left: -60px;
-  width: 120px;
-  padding: 12px 0;
-  font-size: 16px;
   text-align: center;
-  border: none;
-  cursor: pointer;
+  top: 40vh;
 }
-.reload-bttn:hover {
-  color: #0D0D0D;
-  background: white;
-  border: 1px solid #3498db;
-}
-.reload-bttn:active,
-.reload-bttn:focus {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  text-shadow: none;
-  border: none;
-  outline: 0;
-}
-
 /* RSS FEED */
 
 .BreakingNewsController {
-  width: 90%;
-  overflow: hidden;
   background: #3498db;
-  height: auto;
-  position: absolute;
   bottom: 12px;
+  height: auto;
+  overflow: hidden;
+  position: absolute;
+  width: 90%;
 }
 .BreakingNewsController .bn-title {
-  display: inline-block;
+  display: block;
   float: left;
   padding: 10px 20px;
 }
 .BreakingNewsController ul {
-  padding: 0;
-  margin: 0;
   display: block;
-  list-style: none;
-  position: absolute;
   left: 180px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
   right: 50px;
 }
 .BreakingNewsController ul li {
+  display: none;
   list-style: none;
   padding: 10px 20px;
-  display: none;
 }
 .BreakingNewsController ul li a {
-  text-decoration: none;
   color: #FFF;
   display: inline-block;
   overflow: hidden;
   padding: 0;
+  text-decoration: none;
 }
 .easing a,
 .easing span {
   transition: .25s linear;
   -moz-transition: .25s linear;
+  -o-transition: .25s linear;
   -webkit-transition: .25s linear;
 }
