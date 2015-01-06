@@ -12,34 +12,33 @@
 </head>
 
 <body>
+  <div class="mainBody">
+    <div class="weather fade">
+      <p class="temp"></p>
+      <img class="weather_icon" src="#" alt="" />
+    </div>
 
-  <div class="weather fade">
-    <p class="temp"></p>
-    <img class="weather_icon" src="#" alt="" />
+    <div class="container">
+      <p class="msg fade"></p>
+    </div>
+    <div class="BreakingNewsController easing fade" id="breakingnews">
+      <div class="bn-title"></div>
+      <ul>
+      </ul>
+    </div>
   </div>
-
-  <div class="container">
-    <p class="msg fade"></p>
-  </div>
-  <div class="BreakingNewsController easing fade" id="breakingnews">
-    <div class="bn-title"></div>
-    <ul>
-    </ul>
-  </div>
-
 
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
   <script src="js/BreakingNews.js"></script>
   <script type="text/javascript">
-
     $(document).keypress(function (event) {
       var keycode = (event.keyCode ? event.keyCode : event.which);
       if (keycode == '13') {
-        $('body').fadeOut('slow');
-        location.reload();
+        $('.mainBody').fadeOut(1000, function() {
+            location.reload();
+        });
       };
-
     });
 
     var messages = [
@@ -108,10 +107,6 @@
       data: "http://www.tested.com/feeds/",
 
     });
-
-    function reload() {
-
-    }
 
     compliments();
     getWeather();
