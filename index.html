@@ -32,6 +32,16 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
   <script src="js/BreakingNews.js"></script>
   <script type="text/javascript">
+
+    $(document).keypress(function (event) {
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if (keycode == '13') {
+        $('body').fadeOut('slow');
+        location.reload();
+      };
+
+    });
+
     var messages = [
       "Looking good.",
       "Have a great day.",
@@ -98,6 +108,10 @@
       data: "http://www.tested.com/feeds/",
 
     });
+
+    function reload() {
+
+    }
 
     compliments();
     getWeather();
