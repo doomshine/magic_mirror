@@ -8,20 +8,31 @@
   <meta name="description" content="Random Nice Thing Generator">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
   <div class="mainBody">
-    <div class="weather fade">
-      <p class="temp"></p>
-      <img class="weather_icon" src="#" alt="" />
+   <div class="box left intro">
+    <div class="clock intro"></div>
+    <hr class="line intro" />
+    <div class="day intro"></div>
+    <div class="date intro"></div>
+    </div>
+
+    <div class="box right intro">
+      <div class="icon intro">
+        <img class="weather_icon" src="#" alt="" />
+      </div>
+      <div class="temp intro"></div>
     </div>
 
     <div class="container">
-      <p class="msg fade"></p>
+      <p class="msg introBottom"></p>
     </div>
-    <div class="BreakingNewsController easing fade" id="breakingnews">
+    <div class="BreakingNewsController easing introBottom" id="breakingnews">
       <div class="bn-title"></div>
       <ul>
       </ul>
@@ -35,8 +46,8 @@
     $(document).keypress(function (event) {
       var keycode = (event.keyCode ? event.keyCode : event.which);
       if (keycode == '13') {
-        $('.mainBody').fadeOut(1000, function() {
-            location.reload();
+        $('.mainBody').fadeOut(1000, function () {
+          location.reload();
         });
       };
     });
@@ -68,20 +79,63 @@
       "You seem nice."
     ];
 
-    function getWeather() {
+    $(document).ready(function printDay() {
+      var day = new Date();
+
+      var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      var msg = document.querySelectorAll('.day')[0];
+      msg.innerHTML = (weekday[day.getDay()]);
+    });
+
+    $(document).ready(function printDate() {
+      var date = new Date();
+
+      var dd = date.getDate();
+
+      var s = 'th';
+      if (dd === 1) s = 'st';
+      if (dd === 2) s = 'nd';
+      if (dd === 3) s = 'rd';
+      var ddx = dd + s;
+
+      var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October"];
+      var mm = (month[date.getMonth()]);
+
+      var yyyy = date.getFullYear();
+
+      var today = mm + ' ' + ddx + ', ' + yyyy;
+      var fullDate = document.querySelectorAll('.date')[0];
+      fullDate.innerHTML = today;
+    });
+
+    $(document).ready(function getWeather() {
       $.ajax({
         async: true,
-        url: "http://api.wunderground.com/api/b85fbf77a6804cc7/geolookup/conditions/q/MN/Minneapolis.json",
+        url: "http://api.wunderground.com/api/b85fbf77a6804cc7/geolookup/conditions/q/autoip.json",
         dataType: "jsonp",
         success: function (parsed_json) {
-          icon = parsed_json['current_observation']['icon'];
           temp_f = parsed_json['current_observation']['temp_f'];
           temp = document.querySelectorAll('.temp')[0];
-          $('.weather_icon').attr('src', 'img/' + icon + '.svg');
           temp.innerHTML = temp_f + '&deg;F';
-          weather.innerHTML = weather;
+          icon = parsed_json['current_observation']['icon'];
+          $('.weather_icon').attr('src', 'img/' + icon + '.svg');
         }
       });
+    });
+
+    function startTime() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12;
+      h = h ? h : 12;
+      m = m < 10 ? '0' + m : m;
+      var clock = document.querySelectorAll('.clock')[0];
+      clock.innerHTML = h + ":" + m + ' ' + ampm;
+      var t = setTimeout(function () {
+        startTime()
+      }, 1000);
     };
 
     function compliments() {
@@ -108,8 +162,8 @@
 
     });
 
+    startTime();
     compliments();
-    getWeather();
   </script>
 </body>
 
