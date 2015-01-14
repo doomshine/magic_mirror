@@ -10,6 +10,8 @@ body {
   margin: 0 auto;
 }
 .clock {
+  text-align: right;
+  width: 160px;
   display: inline-block;
   color: white;
   font-size: 36px;
